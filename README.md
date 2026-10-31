@@ -20,7 +20,7 @@ This repository holds the server's public description, its registry listing and 
 | `best_cuts_for_gemstone` | The top ten brilliants and top ten jewelry cuts in one gemstone, with the stone's optical constants. |
 | `cut_in_gemstone` | How one cut performs in one gemstone: eight measured scores against the T73 round brilliant, with pros and cons. |
 | `list_gemstones` | The seven gemstones (diamond, moissanite, cubic zirconia, ruby, sapphire, emerald, amethyst) with refractive index, critical angle, dispersion, hardness and specific gravity. |
-| `get_cut_scores` | The [Cut Performance Index](https://digitalgemology.com/learn/cut-performance-index): overall, brilliance, fire, scintillation, tilt, symmetry, spread, shape-norm and leakage, in diamond and in moissanite. |
+| `get_cut_scores` | The [Cut Performance Index](https://digitalgemology.com/learn/cut-performance-index): overall, brilliance, fire, scintillation, tilt, symmetry, spread, shape-norm and leakage, in all seven gemstones. |
 
 ## Connect
 
@@ -60,7 +60,7 @@ curl -s https://digitalgemology.com/mcp \
 
 ## Data
 
-[`data/`](data/) holds the **Digital Gemology Cut Performance Index**: ray-traced light-performance scores for 45 gem cuts, in diamond and in moissanite (90 rows). The method and every column are explained on the [index page](https://digitalgemology.com/learn/cut-performance-index).
+[`data/`](data/) holds the **Digital Gemology Cut Performance Index**: ray-traced light-performance scores for 45 gem cuts in seven gemstones, diamond, moissanite, cubic zirconia, ruby, sapphire, emerald and amethyst (315 rows). Ruby and sapphire are both corundum, so they share one set of figures; color and absorption are not part of the trace. The method and every column are explained on the [index page](https://digitalgemology.com/learn/cut-performance-index).
 
 - DOI: [10.5281/zenodo.23844870](https://doi.org/10.5281/zenodo.23844870)
 - Also on [Kaggle](https://www.kaggle.com/datasets/digitalgemology/digital-gemology-cut-performance-index) and [Hugging Face](https://huggingface.co/datasets/DigitalGemology/cut-performance-index)
