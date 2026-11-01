@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.digitalgemology/cut-library",
-  "title": "Digital Gemology cut library",
-  "description": "Gem cuts with ray-traced brilliance, fire and scintillation in 7 stones, plus 3D and faceting files.",
-  "version": "1.0.1",
+  "title": "Digital Gemology: gemstone and diamond cut library",
+  "description": "Gemstone and diamond cuts: ray-traced brilliance, fire and sparkle in 7 gems, 3D and faceting files",
+  "version": "1.0.2",
   "websiteUrl": "https://digitalgemology.com/about/agents",
   "icons": [
     {
