@@ -1,14 +1,15 @@
-# Digital Gemology MCP servers: cut library, gem identification, gemology lessons
+# Digital Gemology MCP servers: cut library, gem identification, gemology lessons, glossary
 
 [![mcptry](https://mcptry.com/badge/com.digitalgemology/cut-library)](https://mcptry.com/servers/com.digitalgemology/cut-library)
 
-Three remote [Model Context Protocol](https://modelcontextprotocol.io) servers from [Digital Gemology](https://digitalgemology.com):
+Four remote [Model Context Protocol](https://modelcontextprotocol.io) servers from [Digital Gemology](https://digitalgemology.com):
 
 | Server | Endpoint | Registry name | What it does |
 |---|---|---|---|
-| Cut library | `https://digitalgemology.com/mcp` | `com.digitalgemology/cut-library` | Search 45 gem cuts; ray-traced brilliance, fire and scintillation in seven gemstones; compare cuts; recommend a cut; 3D models and GemCad faceting diagrams |
+| Cut library | `https://digitalgemology.com/mcp` | `com.digitalgemology/cut-library` | Search 40 gem cuts and 5 Platonic solids; ray-traced brilliance, fire and scintillation in seven gemstones; compare cuts; recommend a cut; 3D models and GemCad faceting diagrams |
 | Gem identification | `https://digitalgemology.com/mcp/gems` | `com.digitalgemology/gem-identification` | Gemstone properties; match refractive index, birefringence, specific gravity, pleochroism and spectrum lines to seven gemstones; tell two gems apart |
 | Gemology lessons | `https://digitalgemology.com/mcp/learn` | `com.digitalgemology/gemology-lessons` | Search, read and quote 53 gemology lessons: the four Cs, diamond anatomy, grading reports, diamond vs moissanite, historic cuts, bow-ties |
+| Gemology glossary | `https://digitalgemology.com/mcp/glossary` | `com.digitalgemology/gemology-glossary` | Define 328 gemology terms: every word on a diamond grading report, the four Cs, clarity characteristics, treatments, gem testing, colored gemstones, and how brilliance, fire and scintillation are measured |
 
 - **Transport:** Streamable HTTP, stateless
 - **Registry:** [official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=com.digitalgemology)
@@ -50,6 +51,16 @@ The values that Digital Gemology's free [Refractometer](https://digitalgemology.
 | `explain_term` | Short passages from the lessons that explain a term ("critical angle", "pavilion angle"), each with its link. |
 | `list_courses` | Every course and its lessons. |
 
+## Gemology glossary tools (`/mcp/glossary`)
+
+328 terms, each with its own page under [digitalgemology.com/learn/glossary](https://digitalgemology.com/learn/glossary). Grading report terms follow GIA, with IGI where it differs.
+
+| Tool | What it does |
+|---|---|
+| `define_term` | One term ("crown angle", "feather", "fluorescence", "scintillation"): a short definition, more detail, where it appears on a grading report, how Digital Gemology measures it, related terms, and its page. |
+| `search_glossary` | Find terms by a word or a question ("what do the girdle words mean", "why does a diamond sparkle"). |
+| `list_glossary` | Every term, or every term in one of 15 topics, with a one-line definition and its page. |
+
 ## Connect
 
 **Claude Code**
@@ -58,6 +69,7 @@ The values that Digital Gemology's free [Refractometer](https://digitalgemology.
 claude mcp add --transport http digital-gemology https://digitalgemology.com/mcp
 claude mcp add --transport http digital-gemology-gems https://digitalgemology.com/mcp/gems
 claude mcp add --transport http digital-gemology-learn https://digitalgemology.com/mcp/learn
+claude mcp add --transport http digital-gemology-glossary https://digitalgemology.com/mcp/glossary
 ```
 
 **Claude Desktop, Cursor, VS Code and other clients** that take a JSON config:
@@ -67,7 +79,8 @@ claude mcp add --transport http digital-gemology-learn https://digitalgemology.c
   "mcpServers": {
     "digital-gemology": { "type": "http", "url": "https://digitalgemology.com/mcp" },
     "digital-gemology-gems": { "type": "http", "url": "https://digitalgemology.com/mcp/gems" },
-    "digital-gemology-learn": { "type": "http", "url": "https://digitalgemology.com/mcp/learn" }
+    "digital-gemology-learn": { "type": "http", "url": "https://digitalgemology.com/mcp/learn" },
+    "digital-gemology-glossary": { "type": "http", "url": "https://digitalgemology.com/mcp/glossary" }
   }
 }
 ```
@@ -83,14 +96,14 @@ curl -s https://digitalgemology.com/mcp \
 ## Other ways in
 
 - **REST API:** `https://digitalgemology.com/api/cuts`, `/api/cuts/{slug}`, `/api/gemstones`, `/api/cut-index` ([OpenAPI](https://digitalgemology.com/api/openapi.json))
-- **JSON files:** [gem data](https://digitalgemology.com/api/gems.json), [all lessons](https://digitalgemology.com/api/learn.json), [the whole cut library](https://digitalgemology.com/api/catalog.json)
+- **JSON files:** [gem data](https://digitalgemology.com/api/gems.json), [all lessons](https://digitalgemology.com/api/learn.json), [the glossary](https://digitalgemology.com/api/glossary.json), [the whole cut library](https://digitalgemology.com/api/catalog.json)
 - **A2A agent:** `https://digitalgemology.com/a2a` ([agent card](https://digitalgemology.com/.well-known/agent-card.json))
 - **For language models:** [llms.txt](https://digitalgemology.com/llms.txt), and a Markdown copy of every page
 - **Docs:** [digitalgemology.com/about/agents](https://digitalgemology.com/about/agents)
 
 ## Data
 
-[`data/`](data/) holds the **Digital Gemology Cut Performance Index**: ray-traced light-performance scores for 45 gem cuts in seven gemstones, diamond, moissanite, cubic zirconia, ruby, sapphire, emerald and amethyst (315 rows). Ruby and sapphire are both corundum, so they share one set of figures; color and absorption are not part of the trace. The method and every column are explained on the [index page](https://digitalgemology.com/learn/cut-performance-index).
+[`data/`](data/) holds the **Digital Gemology Cut Performance Index**: ray-traced light-performance scores for 40 gem cuts and 5 Platonic solids in seven gemstones, diamond, moissanite, cubic zirconia, ruby, sapphire, emerald and amethyst (315 rows; 37 cuts are scored, and the rest are listed with the reason). Ruby and sapphire are both corundum, so they share one set of figures; color and absorption are not part of the trace. The method and every column are explained on the [index page](https://digitalgemology.com/learn/cut-performance-index).
 
 - DOI: [10.5281/zenodo.23844870](https://doi.org/10.5281/zenodo.23844870)
 - Also on [Kaggle](https://www.kaggle.com/datasets/digitalgemology/digital-gemology-cut-performance-index) and [Hugging Face](https://huggingface.co/datasets/DigitalGemology/cut-performance-index)
